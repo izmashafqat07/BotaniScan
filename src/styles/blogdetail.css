@@ -1,0 +1,31 @@
+/* styles.css */
+
+.container {
+    max-width: 100%;
+    padding: 0;
+  }
+  
+  .blog-title {
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .blog-image {
+    width: 800px;
+    height: 300px;
+    margin: 0 auto; /* Center the image horizontally */
+    display: block; /* Ensure the image is treated as a block element */
+    margin-top: 60px;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.3s ease; /* Add smooth transition effect */
+  }
+  
+  .blog-image:hover {
+    opacity: 0.8; /* Adjust the opacity value as needed on hover */
+  }
+  .blog-content{
+    margin-top: 50px;
+  }

@@ -1,0 +1,43 @@
+.back-icon{
+    font-size: 30px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.identify-head{
+    margin-top: 10px !important;
+}
+.data-container{
+    /* border: 2px solid red; */
+}
+.identify-btns{
+    background-color: #2c4f40 !important;
+    color: white !important;
+    width: 100px !important;
+}
+.identify-form-container{
+    /* border: 2px solid rgb(211, 146, 146); */
+    height: 400px;
+    width: 100%;
+    margin-top: 30px;
+}
+.identify-form-1{
+    /* border: 2px solid rgb(199, 88, 88); */
+    height: 350px;
+    margin-top: 40px !important;
+    
+
+}
+.identify-form-2{
+    /* border: 2px solid rgb(89, 233, 89); */
+height:350px;
+margin-top: 40px !important;
+border-left: 2px solid rgb(214, 212, 212);
+}
+.identify-btns{
+    background-color: #2c4f40 !important;
+}
+.result-container{
+    /* border: 2px solid red; */
+    height: 300px;
+    margin-top: 80px;
+}
