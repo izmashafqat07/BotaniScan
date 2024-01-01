@@ -27,7 +27,7 @@ const BlogDetail = () => {
         <div className="blog-title">
           <h1>{blog.title}</h1>
         </div>
-        <img src={blog.image} alt={blog.title} className="blog-image" />
+        {/* <img src={blog.image} alt={blog.title} className="blog-image" /> */}
         <div className="blog-content">
           <p>{blog.content}</p>
         </div>

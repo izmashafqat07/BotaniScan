@@ -14,7 +14,7 @@ const BlogCard = () => {
         {/* Featured Blog */}
         <div className="col-md-6 mb-4">
           {blogData.slice(0, 1).map((blog) => (
-            <div key={blog.id} className="card" style={{ width: '100%', margin: '10px' }}>
+            <div key={blog.id} className="card" style={{width:"630px", height:"50px" , margin: '10px' }}>
               <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '300px', objectFit: 'cover' }} />
               <div className="card-body">
                 <h5 className="card-title">
@@ -22,7 +22,7 @@ const BlogCard = () => {
                     {blog.title}
                   </Link>
                 </h5>
-                <p className="card-text">{blog.content.substring(0, 150)}...</p>
+                <p className="card-text " style={{textAlign:"justify"}}>{blog.mainBlog}</p>
               </div>
             </div>
           ))}
@@ -38,7 +38,7 @@ const BlogCard = () => {
                   <img src={blog.image} alt={blog.title} className="featured-list-blog-image" />
                   <div>
                     <h6 className='featured-list-blog-title'>{blog.title}</h6>
-                    <p>{blog.content.substring(0, 100)}...</p>
+                    <p>{blog.mainBlog}</p>
                   </div>
                 </div>
               </Link>
@@ -61,7 +61,7 @@ const BlogCard = () => {
                       {blog.title}
                     </Link>
                   </h5>
-                  <p className="remaining-card-text">{blog.content.substring(0, 50)}...</p>
+                  <p className="remaining-card-text">{blog.mainBlog}</p>
                 </div>
               </div>
             </div>

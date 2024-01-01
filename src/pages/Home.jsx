@@ -7,9 +7,11 @@ import grapeImg from './../assets/grape-home-blog.jpg'
 import tomatoImg from './../assets/tomato-home-blog.webp'
 import appleImg from './../assets/apple-home-blog.jpg'
 import { IoIosArrowForward } from "react-icons/io";
+import { useBlogContext } from '../context/BlogContext';
 import './../styles/home.css'
 import { Link } from 'react-router-dom'
 const Home = () => {
+  const blogData = useBlogContext();
   const [typedText, setTypedText] = useState('');
   const targetText = "BotaniScan";
 
@@ -118,9 +120,9 @@ const Home = () => {
       </div>
       <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about grapes</h3>
       <p>Grapes contain such minerals as calcium and phosphorus and are a source of vitamin A. All grapes contain sugar (glucose and fructose) in varying quantities depending upon the variety. </p>
-      <a href="#" class="btn btn-primary home-blog-btn">
+      <Link to={`/Blogs/${blogData[1].id}`}  class="btn btn-primary home-blog-btn">
         Read More <IoIosArrowForward />
-      </a>
+      </Link>
     </div>
     <div class="feature col blog-column mx-auto mb-4 text-justify ms-lg-10 mb-4 shadow" style={{ width: '320px', height: '500px' }}>
       <div class="feature-image align-items-center justify-content-center mb-3">
@@ -133,9 +135,9 @@ const Home = () => {
       </div>
       <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about tomato</h3>
       <p>The plant requires relatively warm weather and much sunlight; it is grown chiefly in hothouses in cooler climates. Tomatoes are usually staked, tied, or caged to keep the stems and fruits off  </p>
-      <a href="#" class="btn btn-primary home-blog-btn ">
+      <Link to={`/Blogs/${blogData[2].id}`} class="btn btn-primary home-blog-btn ">
         Read More <IoIosArrowForward />
-      </a>
+      </Link>
     </div>
     <div class="feature col blog-column mx-auto mb-4 text-justify ms-lg-10 mb-4 shadow" style={{ width: '320px', height: '500px' }}>
       <div class="feature-image align-items-center justify-content-center mb-3">
@@ -148,9 +150,9 @@ const Home = () => {
       </div>
       <h3 class="fs-2 text-body-emphasis home-blog-head ">Learn about apple</h3>
       <p>The apple itself is a pome (fleshy) fruit, in which the ripened ovary and surrounding tissue both become fleshy and edible. When harvested, apples are usually roundish, 5–10 cm (2–4 inches) in </p>
-      <a href="#" class="btn btn-primary home-blog-btn">
+      <Link to={`/Blogs/${blogData[0].id}`}  class="btn btn-primary home-blog-btn">
         Read More <IoIosArrowForward />
-      </a>
+      </Link>
     </div>
   </div>
   

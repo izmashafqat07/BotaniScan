@@ -1,0 +1,47 @@
+.lead{
+    /* border: 2px solid black; */
+    font-size: 20px !important;
+    text-align: justify;
+}
+.hero-head{
+    font-size: 70px
+}
+.hero-container{
+    /* border: 2px solid blue; */
+    width: 1400px !important;
+}
+.feature-technology{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 90px !important;
+}
+.card{
+    border: none !important;
+    border-radius: 20px !important;
+}
+.card-title{
+   
+   font-size: 30px !important;
+  
+}
+.card-text{
+    text-align: center;
+}
+.team-member-circle {
+    text-align: center;
+  }
+  
+  .team-member-image {
+    width: 120px; /* Adjust the size of the circular image */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    margin-bottom: 10px; /* Adjust the spacing between image and name */
+  }
+  
+  .team-member-name {
+    margin: 0;
+    font-weight: bold;
+  }
+  
