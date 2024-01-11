@@ -1,53 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './../styles/header.css';
-import logo from './../assets/logo.jpg';
-import { NavLink, Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import logo from './../assets/logo.jpg'
 
-function Header() {
-  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isSticky, setSticky] = useState(false);
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 0) {
-        setSticky(true);
-      } else {
-        setSticky(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
+const Header = () => {
   return (
-    <div className={`App ${isSticky ? 'sticky' : ''}`}>
-      <nav className={`navbar ${isSticky ? 'sticky' : ''}`}>
-        <div className="logo">
-          <Link to={""}><img src={logo} alt="Logo" /></Link>
+    <>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-11 mx-auto ">
+            <nav className="navbar navbar-expand-lg mynav">
+              <div className="container-fluid">
+                <Link className="navbar-brand" to="/">
+                  <img src={logo} alt="Logo" height="70px" className='ml-3'/>
+                </Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li className="nav-item">
+                      <NavLink className="nav-link mx-4" activeClassName="active" to={"/"}>Home</NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link mx-4" activeClassName="active" to="/about">About</NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link mx-4" activeClassName="active" to="/identify">Identify</NavLink>
+                    </li>
+                    <li className="nav-item">
+                      <NavLink className="nav-link mx-4" activeClassName="active" to="/blogs">Blogs</NavLink>
+                    </li>
+                    {/* Add more NavLink items as needed */}
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
         </div>
-        <div className={`menu ${isMobileMenuOpen ? 'open' : ''}`}>
-          <NavLink to={""}>Home</NavLink>
-          <NavLink to={"about"}>About</NavLink>
-          <NavLink to={"identify"}>Identify</NavLink>
-          <NavLink to={"blogs"}>Blogs</NavLink>
-        </div>
-        <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
-          <div className={`bar ${isMobileMenuOpen ? 'open' : ''}`}></div>
-          <div className={`bar ${isMobileMenuOpen ? 'open' : ''}`}></div>
-          <div className={`bar ${isMobileMenuOpen ? 'open' : ''}`}></div>
-        </div>
-      </nav>
-
-      {/* Add your content here */}
-    </div>
+      </div>
+    </>
   );
 }
 

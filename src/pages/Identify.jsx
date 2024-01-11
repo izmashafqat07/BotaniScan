@@ -27,6 +27,10 @@ const Identify = () => {
     }
   };
 
+
+
+  
+
   const handleTakePhoto = () => {
     setShowCamera(true);
   };
