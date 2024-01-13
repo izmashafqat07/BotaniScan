@@ -12,10 +12,10 @@ const BlogCard = () => {
     <div>
       <div className="row">
         {/* Featured Blog */}
-        <div className="col-md-6 mb-4">
+        <div className="col-md-6 ">
           {blogData.slice(0, 1).map((blog) => (
             <div key={blog.id} className="card" style={{width:"630px", height:"50px" , margin: '10px' }}>
-              <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '300px', objectFit: 'cover' }} />
+              <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '300px', width:'100%' }} />
               <div className="card-body">
                 <h5 className="card-title">
                   <Link to={`/Blogs/${blog.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>

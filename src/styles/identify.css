@@ -11,35 +11,59 @@
 }
 .identify-form-container{
     /* border: 2px solid rgb(211, 146, 146); */
-    height: 400px;
+    height: 350px;
     width: 100%;
     margin-top: 30px;
 }
 .identify-form-1{
-    /* border: 2px solid rgb(199, 88, 88); */
-    height: 350px;
-    margin-top: 40px !important;
+   /* border: 2px solid red; */
+    height: 300px;
+    /* margin-top: 10px !important; */
     
 
 }
 .identify-form-2{
-    /* border: 2px solid rgb(89, 233, 89); */
-height:350px;
-margin-top: 40px !important;
-border-left: 2px solid rgb(214, 212, 212);
+    /* border: 2px solid red; */
+height:320px;
+
+/* margin-top: 10px !important; */
+border-left: 2px solid rgb(175, 173, 173);
 }
 .identify-btns{
-    background-color: #2c4f40 !important;
-}
-.result-container{
-    /* border: 2px solid red; */
-    height: 300px;
-    margin-top: 80px;
-}
+ width: 200px !important; 
+ margin-right: 10px !important; 
+ margin-top: 30px !important; 
+ background-color: #2c4f40 !important; }
 
-  
-  .identify-form-1, .identify-form-2 {
-    height: 100% !important;
-    margin-top: 0 !important;
+  .result-container {
+/* border: 2px solid red; */
+height: 300px;
+margin-top: 40px;
   }
-  
+ 
+ @media (max-width:450px){
+    .identify-form-1{
+        /* background-color: yellow; */
+    }
+    .identify-btns{
+        background-color: #2c4f40 !important;
+        color: white !important;
+        width:160px !important; /* Adjust the percentage as needed */
+   margin-left: 10px !important;
+        margin-right: 20px;
+        text-align: center;
+        margin-top: 30px !important;
+        font-size: 10px !important;
+    }
+    .identify-form-2{
+        /* background-color: pink; */
+        margin-top: 70px !important;
+        height: 200px;
+        border: none;
+    }
+    .result-container{
+        /* background-color: blue; */
+        margin-top: 240px;
+        height: 150px;
+    }
+ }

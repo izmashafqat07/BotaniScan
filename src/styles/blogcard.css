@@ -63,3 +63,79 @@
   .remaining-card-text{
     font-size: 15px;
   }
+  /* blogcard.css */
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .card-title {
+    font-size: 40px;
+  }
+
+  .card-text {
+    font-size: 20px;
+  }
+
+  .remaining-card-title {
+    font-size: 20px;
+  }
+
+  .remaining-card-text {
+    font-size: 15px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .card-title {
+    font-size: 30px;
+  }
+
+  .card-text {
+    font-size: 18px;
+  }
+
+  .remaining-card-title {
+    font-size: 18px;
+  }
+
+  .remaining-card-text {
+    font-size: 14px;
+  }
+
+  .remaining-blogs {
+    margin-top: 50px !important;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+  .remaining-card-title {
+    font-size: 14px;
+  }
+
+  .remaining-card-text {
+    font-size: 10px;
+  }
+
+  .remaining-blogs {
+    margin-top: 30px !important;
+  }
+}
+
+/* Add hover effect to the image in the Featured Blog */
+.card-img-top:hover,
+.featured-list-blog-image:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}

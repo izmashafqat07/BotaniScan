@@ -59,9 +59,9 @@ const About = () => {
 
   return (
     <>
-      <div className="container-fluid col-xxl-8 px-4 py-5 hero-container">
+      <div className="container col-xxl-12 px-4 py-5 hero-container">
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-          <div className="col-10 col-sm-8 col-lg-6">
+          <div className=" col-sm-12 col-lg-4 hero-img-div">
             <img
               src={aboutgif}
               className="d-block mx-lg-auto img-fluid"
@@ -81,7 +81,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-center">Advanced Technology At Work</h1>
+      <h1 className="text-center tech-head">Advanced Technology At Work</h1>
       <div className="container feature-technology">
         <div className="card shadow" style={{ width: '18rem' }}>
           <img src={machinelearning} className="card-img-top" alt="..." height="180px" width="100px" />

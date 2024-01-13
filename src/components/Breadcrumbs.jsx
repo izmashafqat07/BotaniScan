@@ -9,7 +9,7 @@ const Breadcrumbs = () => {
   console.log('pathSegments:', pathSegments);
   console.log('blogData:', blogData);
   return (
-    <nav aria-label="breadcrumb" style={{marginLeft:"60px"}}>
+    <nav aria-label="breadcrumb" style={{marginLeft:"60px" , marginTop:"30px"}}>
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
           <Link to="/">Home</Link>

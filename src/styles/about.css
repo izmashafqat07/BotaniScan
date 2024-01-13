@@ -1,47 +1,69 @@
-.lead{
-    /* border: 2px solid black; */
+/* about.css */
+.lead {
     font-size: 20px !important;
     text-align: justify;
-}
-.hero-head{
-    font-size: 70px
-}
-.hero-container{
-    /* border: 2px solid blue; */
+  }
+  
+  .hero-head {
+    font-size: 70px;
+  }
+  
+  .hero-container {
     width: 1400px !important;
-}
-.feature-technology{
+  }
+  
+  .feature-technology {
     display: flex;
     justify-content: space-around;
     margin-top: 90px !important;
-}
-.card{
+  }
+  
+  .card {
     border: none !important;
     border-radius: 20px !important;
-}
-.card-title{
-   
-   font-size: 30px !important;
+    margin-bottom: 20px; /* Add some spacing between cards */
+  }
   
-}
-.card-text{
+  .card-title {
+    font-size: 30px !important;
     text-align: center;
-}
-.team-member-circle {
+  }
+  
+  .card-text {
+    text-align: center;
+  }
+  
+  .team-member-circle {
     text-align: center;
   }
   
   .team-member-image {
-    width: 120px; /* Adjust the size of the circular image */
+    width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
     object-position: top;
-    margin-bottom: 10px; /* Adjust the spacing between image and name */
+    margin-bottom: 10px;
   }
   
   .team-member-name {
     margin: 0;
     font-weight: bold;
+  }
+  
+  /* Responsive adjustments for cards */
+  @media (max-width: 768px) {
+    .feature-technology {
+      flex-direction: column; /* Stack cards vertically on small screens */
+      align-items: center; /* Center cards */
+    }
+  
+    .card {
+      width: 100px; /* Adjust card width for smaller screens */
+      
+    }
+    .tech-head{
+        font-size: 25px;
+    }
   }
   

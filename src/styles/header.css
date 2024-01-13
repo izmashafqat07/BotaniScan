@@ -1,8 +1,20 @@
-.mynav{
-  /* border: 2px solid red !important; */
+/* header.css */
+.mynav {
+  background-color: rgb(255, 255, 255);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition for box-shadow */
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Add box shadow */
 }
-.active{
-  color:#2c4f40 !important;
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  /* box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); Add box shadow */
+}
+
+.active {
+  color: #2c4f40 !important;
   font-weight: 500 !important;
   font-size: 15px !important;
 }

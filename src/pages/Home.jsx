@@ -46,18 +46,18 @@ const Home = () => {
   }, []);
   return (
    <>
-    <div class="container-fluid col-xxl-8 px-4 py-5 hero-container ">
+    <div class="container col-xxl-12 px-4 py-5 hero-container ">
     <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6 hero-img  d-flex justify-content-center">
-        <img src={gif} class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="300" height="300" loading="lazy"/>
+      <div class=" col-sm-12 col-lg-4 hero-img-div  ">
+        <img src={gif} class="d-block mx-lg-auto hero-img  img-fluid" alt="Bootstrap Themes" width="300" height="300" loading="lazy"/>
       </div>
-      <div class="col-lg-6 ms-lg-6 hero-txt-container">
+      <div class="col-lg-8  hero-txt-container col-sm-12 ">
   <div class="d-flex flex-column align-items-start">
     <p class="hero-lead">Make Your Plant's Thrive With <br />
       <span><h1 className='hero-head'>{typedText}</h1></span>Smart Plant Care for Everyone
     </p>
   </div>
-  <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+  <div class="d-grid gap-2 d-md-flex justify-content-md-start col-sm-2">
     <Link to={"identify"}><button type="button" class="btn btn-primary btn-lg px-4 me-md-2 hero-btn">Identify</button></Link>
   </div>
 </div>
@@ -168,5 +168,4 @@ const Home = () => {
    </>
   )
 }
-
 export default Home

@@ -1,3 +1,4 @@
+// Import necessary dependencies and assets
 import React, { useState, useRef } from 'react';
 import { IoIosArrowDropleft } from 'react-icons/io';
 import { Link, useLocation } from 'react-router-dom';
@@ -5,8 +6,10 @@ import { BsUpload } from 'react-icons/bs';
 import { FaCamera } from 'react-icons/fa';
 import Button from '@mui/material/Button';
 import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
+import CircularProgress from '@mui/material/CircularProgress';
 import 'react-html5-camera-photo/build/css/index.css';
 import IdentifyBreadCrumb from './../components/IdentifyBreadCrumb';
+import './../styles/identify.css';
 
 const Identify = () => {
   const location = useLocation();
@@ -15,6 +18,7 @@ const Identify = () => {
   const [showCamera, setShowCamera] = useState(false);
   const [identificationType, setIdentificationType] = useState(null);
   const [identificationResults, setIdentificationResults] = useState(null);
+  const [loading, setLoading] = useState(false);
   const cameraRef = useRef(null);
 
   const handleFileChange = (event) => {
@@ -26,9 +30,43 @@ const Identify = () => {
     setShowCamera(true);
   };
 
-  const handleCameraPhoto = (dataUri) => {
-    setSelectedFile(dataUri);
-    setShowCamera(false);
+  const handleCameraPhoto = async (dataUri) => {
+    try {
+      // Create an image element
+      const image = new Image();
+      image.src = dataUri;
+
+      // Wait for the image to load
+      await new Promise((resolve) => (image.onload = resolve));
+
+      // Create a canvas element
+      const canvas = document.createElement('canvas');
+      canvas.width = image.width;
+      canvas.height = image.height;
+
+      // Draw the image on the canvas
+      const context = canvas.getContext('2d');
+      context.drawImage(image, 0, 0);
+
+      // Convert the canvas content to a blob with the desired format (e.g., JPEG)
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          const file = new File([blob], 'camera-photo.jpg', { type: 'image/jpeg' });
+
+          // Print resolution to the console
+          console.log('Image Resolution:', image.width, 'x', image.height);
+
+          setSelectedFile(file);
+          setShowCamera(false);
+
+          if (identificationType) {
+            await handleDetection();
+          }
+        }
+      }, 'image/jpeg', 1.0);
+    } catch (error) {
+      console.error('Error converting data URI to Blob:', error);
+    }
   };
 
   const handleCameraError = (error) => {
@@ -38,57 +76,102 @@ const Identify = () => {
   const handleRadioChange = (event) => {
     setIdentificationType(event.target.value);
   };
+
   const handleDetection = async () => {
     if (!identificationType) {
       alert('Please select an identification type.');
       return;
     }
-  
-    if (identificationType === 'plantName') {
-      console.log('Performing plant name detection...');
-      // Add logic for plant name detection
-    } else if (identificationType === 'plantDisease') {
-      console.log('Performing plant disease detection...');
-  
-      try {
-        const formData = new FormData();
+
+    setLoading(true);
+
+    try {
+      const formData = new FormData();
+      formData.append('identificationType', identificationType);
+
+      if (identificationType === 'plantDisease') {
         formData.append('image', selectedFile);
-  
-        const response = await fetch('https://botanisacan.azurewebsites.net/disease_detect', {
-          method: 'POST',
-          body: formData,
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          const { predicted_class, confidence, warning } = data;
-  
-          if (warning) {
-            // Handle black and white image warning
-            console.warn('Warning:', warning);
-            // Display warning message to the user
-            setIdentificationResults(`Warning: ${warning}`);
-          } else {
-            const results = `Disease Detected: ${predicted_class}, Confidence: ${confidence}`;
-            console.log(results);
-            setIdentificationResults(results);
-          }
-        } else {
-          const errorData = await response.json();
-          const errorMessage = errorData.error || errorData.warning;
-          console.error('API Error:', errorMessage);
-          setIdentificationResults(`API Error: ${errorMessage}`);
-        }
-      } catch (error) {
-        console.error('An error occurred while connecting to the API:', error);
-        setIdentificationResults(`API Connection Error: ${error.message}`);
+        await sendToBackend('https://botanisacan.azurewebsites.net/disease_detect', formData, 'disease');
+      } else if (identificationType === 'plantName') {
+        formData.append('image', selectedFile);
+        await sendToBackend('https://botanisacan.azurewebsites.net/classify', formData, 'plantName');
+      } else if (identificationType === 'waterLevel') {
+        formData.append('image', selectedFile);
+        await sendToBackend('https://botanisacan.azurewebsites.net/water_estimation', formData, 'waterLevel');
       }
-    } else if (identificationType === 'waterLevel') {
-      console.log('Performing plant water level detection...');
-      // Add logic for plant water level detection
+    } catch (error) {
+      console.error('Error preparing and sending data to the backend:', error);
+    } finally {
+      setLoading(false);
     }
   };
-  
+
+  const sendToBackend = async (url, formData, resultType) => {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { predicted_class, confidence, warning } = data;
+
+        if (warning) {
+          console.warn('Warning:', warning);
+          setIdentificationResults(`Warning: ${warning}`);
+        } else {
+          let results = '';
+          switch (resultType) {
+            case 'disease':
+              results = (
+                <>
+                  Disease or not: {predicted_class}
+                  <br /> <br />
+                  Confidence: {confidence}
+                </>
+              );
+              break;
+            case 'plantName':
+              results = (
+                <>
+                  Plant Name: {predicted_class}
+                  <br /> <br />
+                  Confidence: {confidence}
+                </>
+              );
+              break;
+            case 'waterLevel':
+              results = (
+                <>
+                  Water Level: {predicted_class}
+                  <br /> <br />
+                  Confidence: {confidence}
+                </>
+              );
+              break;
+            default:
+              results = 'Invalid result type';
+              break;
+          }
+          
+
+          console.log(results);
+          setIdentificationResults(results);
+        }
+      } else {
+        const errorData = await response.json();
+        const errorMessage = errorData.error || errorData.warning;
+        console.error('API Error:', errorMessage);
+        setIdentificationResults(`API Error: ${errorMessage}`);
+      }
+    } catch (error) {
+      console.error('An error occurred while connecting to the API:', error);
+      setIdentificationResults(`API Connection Error: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -101,7 +184,7 @@ const Identify = () => {
         {!showCamera && (
           <div className="container-fluid identify-form-container shadow">
             <div className="row">
-              <div className="col-md-6 d-flex flex-column align-items-center identify-form-1">
+              <div className="col-md-6 d-flex flex-column align-items-center identify-form-1 col-sm-12">
                 <div className="box text-center mb-3" style={{ height: '150px', width: '150px', border: '2px solid black', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {selectedFile ? (
                     <img src={selectedFile instanceof File ? URL.createObjectURL(selectedFile) : selectedFile} alt="Uploaded" style={{ maxWidth: '100%', maxHeight: '100%' }} />
@@ -118,22 +201,22 @@ const Identify = () => {
                     id="upload-photo"
                   />
                   <label htmlFor="upload-photo">
-                    <Button component="span" variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }}>
+                    <Button className="identify-btns" component="span" variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }}>
                       <BsUpload style={{ marginRight: '10px' }} /> Upload Photo
                     </Button>
                   </label>
-                  <Button variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }} onClick={handleTakePhoto}>
+                  <Button className="identify-btns" variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }} onClick={handleTakePhoto}>
                     <FaCamera style={{ marginRight: '10px' }} /> Take Photo
                   </Button>
                 </div>
                 <div className="mt-3">
-                  <Button variant="contained" style={{ width: '200px', marginTop: '20px', backgroundColor: '#2c4f40' }} onClick={handleDetection}>
+                  <Button className="identify-btns" variant="contained" style={{ width: '200px', marginTop: '20px', backgroundColor: '#2c4f40' }} onClick={handleDetection}>
                     Detect
                   </Button>
                 </div>
               </div>
 
-              <div className="col-md-6 identify-form-2">
+              <div className="col-md-6 identify-form-2 col-sm-12 mt-10">
                 <div className="box">
                   <p>What do you want to identify?</p>
                   <form>
@@ -189,19 +272,33 @@ const Identify = () => {
             onCameraError={(error) => { handleCameraError(error); }}
             imageType={IMAGE_TYPES.PNG}
             idealFacingMode={FACING_MODES.ENVIRONMENT}
-            isFullscreen={true}
+            isFullscreen={false}
             isMaxResolution={true}
             ref={cameraRef}
-          />
+          >
+            {({ onTakePhoto }) => (
+              <div className="text-center mt-3">
+                <Button className="identify-btns" variant="contained" style={{ width: '200px', marginTop: '20px', backgroundColor: '#2c4f40' }} onClick={onTakePhoto}>
+                  Take Photo
+                </Button>
+              </div>
+            )}
+          </Camera>
         )}
 
-        <div className="container-fluid result-container shadow">
+        <div className="container-fluid result-container shadow col-md-12 col-sm-12">
           <div className="row">
             <h2 className='text-center'>Identification Results</h2>
-            {identificationResults && (
-              <div className="text-center">
-                <p>{identificationResults}</p>
+            {loading ? (
+              <div className="text-center mt-3">
+                <CircularProgress />
               </div>
+            ) : (
+              identificationResults && (
+                <div className="text-center">
+                  <p style={{fontWeight:"700" , marginTop:"20px"}}> &nbsp; {identificationResults}</p>
+                </div>
+              )
             )}
           </div>
         </div>

@@ -1,15 +1,30 @@
-import React from 'react';
+// Header.jsx
+import React, { useState, useEffect } from 'react';
 import './../styles/header.css';
 import { Link, NavLink } from 'react-router-dom';
-import logo from './../assets/logo.jpg'
+import logo from './../assets/logo.jpg';
 
 const Header = () => {
+  const [isSticky, setSticky] = useState(false);
+
+  const handleScroll = () => {
+    setSticky(window.scrollY > 0);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="container-fluid">
+      <div className={`container-fluid mynav ${isSticky ? 'sticky' : ''}`}>
         <div className="row">
-          <div className="col-11 mx-auto ">
-            <nav className="navbar navbar-expand-lg mynav">
+          <div className="col-10 mx-auto">
+            <nav className="navbar navbar-expand-lg">
               <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                   <img src={logo} alt="Logo" height="70px" className='ml-3'/>
@@ -41,6 +56,6 @@ const Header = () => {
       </div>
     </>
   );
-}
+};
 
 export default Header;
