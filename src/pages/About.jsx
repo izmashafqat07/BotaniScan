@@ -12,10 +12,12 @@ import teamMember4 from './../assets/izma.jpg';
 import teamMember5 from './../assets/aqsa.jpg';
 
 const About = () => {
+   // State for the typing animation in the hero section
   const [typedText, setTypedText] = useState('');
   const targetText = 'BotaniScan';
 
   useEffect(() => {
+      // Animation effect for typing text
     let currentIndex = 0;
     const intervalId = setInterval(() => {
       setTypedText(targetText.substring(0, currentIndex + 1));
@@ -25,7 +27,7 @@ const About = () => {
         clearInterval(intervalId);
       }
     }, 300);
-
+   // Cleanup interval on component unmount
     return () => clearInterval(intervalId);
   }, []);
 
@@ -59,9 +61,11 @@ const About = () => {
 
   return (
     <>
+    {/* Hero section */}
       <div className="container col-xxl-12 px-4 py-5 hero-container">
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div className=" col-sm-12 col-lg-4 hero-img-div">
+            {/* Hero image */}
             <img
               src={aboutgif}
               className="d-block mx-lg-auto img-fluid"
@@ -72,7 +76,9 @@ const About = () => {
             />
           </div>
           <div className=" col-lg-6 ms-lg-6 hero-txt-container">
-            <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">At {typedText}</h1>
+           {/* Hero title with typing animation */}
+            <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">At {typedText}</h1>\
+              {/* Hero description */}
             <p className="lead">
               we believe that connecting with nature enhances our well-being and deepens our understanding of the world
               around us. Our platform is designed to empower you with the knowledge and tools to identify, appreciate, and
@@ -81,8 +87,10 @@ const About = () => {
           </div>
         </div>
       </div>
+       {/* Technology section */}
       <h1 className="text-center tech-head">Advanced Technology At Work</h1>
       <div className="container feature-technology">
+      {/* Cards showcasing advanced technologies */}
         <div className="card shadow" style={{ width: '18rem' }}>
           <img src={machinelearning} className="card-img-top" alt="..." height="180px" width="100px" />
           <div className="card-body">

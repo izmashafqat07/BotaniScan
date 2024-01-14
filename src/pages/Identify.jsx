@@ -12,24 +12,26 @@ import IdentifyBreadCrumb from './../components/IdentifyBreadCrumb';
 import './../styles/identify.css';
 
 const Identify = () => {
+   // Hook to get the current location
   const location = useLocation();
   const pathnames = location.pathname.split('/').filter((x) => x);
+  // State variables
   const [selectedFile, setSelectedFile] = useState(null);
   const [showCamera, setShowCamera] = useState(false);
   const [identificationType, setIdentificationType] = useState(null);
   const [identificationResults, setIdentificationResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const cameraRef = useRef(null);
-
+// Handle file input change
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     setSelectedFile(file);
   };
-
+  // Handle take photo button click
   const handleTakePhoto = () => {
     setShowCamera(true);
   };
-
+  // Handle take photo button click
   const handleCameraPhoto = async (dataUri) => {
     try {
       // Create an image element
@@ -68,15 +70,15 @@ const Identify = () => {
       console.error('Error converting data URI to Blob:', error);
     }
   };
-
+ // Handle camera error
   const handleCameraError = (error) => {
     console.error('Error accessing camera:', error);
   };
-
+ // Handle radio button change for identification type
   const handleRadioChange = (event) => {
     setIdentificationType(event.target.value);
   };
-
+// Handle detection button click
   const handleDetection = async () => {
     if (!identificationType) {
       alert('Please select an identification type.');
@@ -105,7 +107,7 @@ const Identify = () => {
       setLoading(false);
     }
   };
-
+ // Send data to the backend for processing
   const sendToBackend = async (url, formData, resultType) => {
     try {
       const response = await fetch(url, {
@@ -175,12 +177,13 @@ const Identify = () => {
 
   return (
     <>
+    {/* call of breadcrumb */}
       <IdentifyBreadCrumb />
       <div className="container-fluid mt-4">
         <div className="row">
           <h2 className='text-center identify-head'>Identify Your Plants Now</h2>
         </div>
-
+{/* form container  */}
         {!showCamera && (
           <div className="container-fluid identify-form-container shadow">
             <div className="row">
@@ -201,21 +204,24 @@ const Identify = () => {
                     id="upload-photo"
                   />
                   <label htmlFor="upload-photo">
+                  {/* upload photo button  */}
                     <Button className="identify-btns" component="span" variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }}>
                       <BsUpload style={{ marginRight: '10px' }} /> Upload Photo
                     </Button>
                   </label>
+                     {/* take photo button  */}
                   <Button className="identify-btns" variant="contained" style={{ width: '200px', marginRight: '10px', marginTop: '30px', backgroundColor: '#2c4f40' }} onClick={handleTakePhoto}>
                     <FaCamera style={{ marginRight: '10px' }} /> Take Photo
                   </Button>
                 </div>
+                   {/* detect button code  */}
                 <div className="mt-3">
                   <Button className="identify-btns" variant="contained" style={{ width: '200px', marginTop: '20px', backgroundColor: '#2c4f40' }} onClick={handleDetection}>
                     Detect
                   </Button>
                 </div>
               </div>
-
+{/* form for radio input */}
               <div className="col-md-6 identify-form-2 col-sm-12 mt-10">
                 <div className="box">
                   <p>What do you want to identify?</p>
@@ -265,7 +271,7 @@ const Identify = () => {
             </div>
           </div>
         )}
-
+{/* camera component  */}
         {showCamera && (
           <Camera
             onTakePhoto={(dataUri) => { handleCameraPhoto(dataUri); }}
@@ -285,10 +291,11 @@ const Identify = () => {
             )}
           </Camera>
         )}
-
+{/* identification results box  */}
         <div className="container-fluid result-container shadow col-md-12 col-sm-12">
           <div className="row">
             <h2 className='text-center' style={{marginTop:"20px"}}>Identification Results</h2>
+             {/* code for loader */}
             {loading ? (
               <div className="text-center mt-3">
                 <CircularProgress />

@@ -1,137 +1,103 @@
 /* blogcard.css */
 
-/* blogcard.css */
-.card-title{
-    color: rgb(0, 0, 0) ;
-    font-size: 40px;
-   
+/* Styles for card titles */
+.card-title {
+  color: rgb(0, 0, 0);
+  font-size: 40px;
 }
-.card-text{
-    font-size: 20px;
-}
-.card-title:hover{
-   text-decoration: underline;
-   
-}
-.featured-list-blog-title{
-    color: black;
-}
-.featured-list-blog-title:hover{
-   text-decoration: underline;}
-   /* blogcard.css */
 
+/* Styles for card text */
+.card-text {
+  font-size: 20px;
+}
+
+/* Hover effect for card titles */
+.card-title:hover {
+  text-decoration: underline;
+}
+
+/* Styles for Featured Blogs List titles */
+.featured-list-blog-title {
+  color: black;
+}
+
+/* Hover effect for Featured Blogs List titles */
+.featured-list-blog-title:hover {
+  text-decoration: underline;
+}
+
+/* Styles for Featured Blogs List container */
 .featured-list-blog {
-    display: flex;
-    align-items: center;
-  }
-  
-  .featured-list-blog-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  .featured-list-blog-image {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-    margin-right: 10px; /* Adjust the margin as needed */
-  }
-  /* blogcard.css */
-
-/* blogcard.css */
-.main-feature-blog{
- 
+  display: flex;
+  align-items: center;
 }
-/* Add hover effect to the image in the Featured Blog */
-.card-img-top:hover {
-    opacity: 0.7; /* Adjust the opacity value as needed (0 for fully transparent, 1 for fully opaque) */
-    transition: opacity 0.3s ease-in-out; /* Adjust the transition duration and easing function as needed */
-  }
-  
-  /* Add hover effect to the image in the Featured Blogs List */
-  .featured-list-blog-image:hover {
-    opacity: 0.7; /* Adjust the opacity value as needed (0 for fully transparent, 1 for fully opaque) */
-    transition: opacity 0.3s ease-in-out; /* Adjust the transition duration and easing function as needed */
-  }
-  .remaining-card-title{
-    font-size: 20px;
-  }
-  .remaining-card-title:hover{
-    text-decoration: underline;
-  }
-  .remaining-blogs{
-    margin-top: 80px !important;
-  }
-  .remaining-card-text{
-    font-size: 15px;
-  }
-  /* blogcard.css */
+
+/* Styles for Featured Blogs List content */
+.featured-list-blog-content {
+  display: flex;
+  align-items: center;
+}
+
+/* Styles for Featured Blogs List images */
+.featured-list-blog-image {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* Styles for main featured blog section */
+.main-feature-blog {
+  /* Add styles as needed */
+}
+
+/* Hover effect for card images in Featured Blog and Featured Blogs List */
+.card-img-top:hover,
+.featured-list-blog-image:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Styles for remaining blog titles */
+.remaining-card-title {
+  font-size: 20px;
+}
+
+/* Hover effect for remaining blog titles */
+.remaining-card-title:hover {
+  text-decoration: underline;
+}
+
+/* Styles for remaining blogs section */
+.remaining-blogs {
+  margin-top: 80px !important;
+}
+
+/* Styles for remaining blog text */
+.remaining-card-text {
+  font-size: 15px;
+}
+
+/* Media queries for responsiveness on different device sizes */
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .card-title {
-    font-size: 40px;
-  }
-
-  .card-text {
-    font-size: 20px;
-  }
-
-  .remaining-card-title {
-    font-size: 20px;
-  }
-
-  .remaining-card-text {
-    font-size: 15px;
-  }
+  /* Adjust font sizes as needed */
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .card-title {
-    font-size: 30px;
-  }
-
-  .card-text {
-    font-size: 18px;
-  }
-
-  .remaining-card-title {
-    font-size: 18px;
-  }
-
-  .remaining-card-text {
-    font-size: 14px;
-  }
-
+  /* Adjust font sizes and other styles for medium devices */
   .remaining-blogs {
-    margin-top: 50px !important;
+      margin-top: 50px !important;
   }
 }
 
-/* Small devices (landscape phones, 576px and up) */
-
-
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-  .card-title {
-    font-size: 20px;
-  }
-
-  .card-text {
-    font-size: 14px;
-  }
-
-  .remaining-card-title {
-    font-size: 14px;
-  }
-
-  .remaining-card-text {
-    font-size: 10px;
-  }
-
+  /* Adjust font sizes and other styles for extra small devices */
   .remaining-blogs {
-    margin-top: 30px !important;
+      margin-top: 30px !important;
   }
 }
 
