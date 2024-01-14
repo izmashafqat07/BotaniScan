@@ -8,16 +8,17 @@ import './../styles/blogcard.css';
 const BlogCard = () => {
   const blogData = useBlogContext();
 
+
   return (
     <div>
       <div className="row">
         {/* Featured Blog */}
-        <div className="col-md-6 ">
+        <div className="col-md-6 col-sm-12 main-feature-blog">
           {blogData.slice(0, 1).map((blog) => (
             <div key={blog.id} className="card" style={{width:"630px", height:"50px" , margin: '10px' }}>
-              <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '300px', width:'100%' }} />
+              <img src={blog.image} className="card-img-top col-sm-12" alt={blog.title} style={{ height: '300px', width:'100%' }} />
               <div className="card-body">
-                <h5 className="card-title">
+                <h5 className="card-title text-left" >
                   <Link to={`/Blogs/${blog.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     {blog.title}
                   </Link>
@@ -29,7 +30,7 @@ const BlogCard = () => {
         </div>
 
         {/* Featured Blogs List */}
-        <div className="col-md-6">
+        <div className="col-md-6 col-sm-12">
           <h3>Featured Blogs</h3>
           {blogData.slice(1, 5).map((blog) => (
             <div key={blog.id} className="mb-3 featured-list-blog">
@@ -53,7 +54,7 @@ const BlogCard = () => {
           {blogData.slice(5).map((blog) => (
             <div key={blog.id} className="col-md-3 mb-4">
               <div className="card" style={{ width: '100%' }}>
-                {/* Assuming the image takes the full width */}
+              
                 <img src={blog.image} className="card-img-top" alt={blog.title} style={{ height: '150px', objectFit: 'cover' }} />
                 <div className="card-body">
                   <h5 className="remaining-card-title">

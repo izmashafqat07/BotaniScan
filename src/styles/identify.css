@@ -11,14 +11,14 @@
 }
 .identify-form-container{
     /* border: 2px solid rgb(211, 146, 146); */
-    height: 350px;
+    height: 370px;
     width: 100%;
     margin-top: 30px;
 }
 .identify-form-1{
    /* border: 2px solid red; */
     height: 300px;
-    /* margin-top: 10px !important; */
+    margin-top: 25px !important;
     
 
 }
@@ -26,7 +26,7 @@
     /* border: 2px solid red; */
 height:320px;
 
-/* margin-top: 10px !important; */
+margin-top: 25px !important;
 border-left: 2px solid rgb(175, 173, 173);
 }
 .identify-btns{
@@ -64,6 +64,6 @@ margin-top: 40px;
     .result-container{
         /* background-color: blue; */
         margin-top: 240px;
-        height: 150px;
+        height: 180px;
     }
  }

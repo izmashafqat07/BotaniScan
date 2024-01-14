@@ -114,11 +114,11 @@ const Home = () => {
         <img
           src={grapeImg}
           alt="Featured Image 1"
-          class="img-fluid"
+          class="img-fluid home-blog-img"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }}
         />
       </div>
-      <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about grapes</h3>
+      <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about Grapes</h3>
       <p>Grapes contain such minerals as calcium and phosphorus and are a source of vitamin A. All grapes contain sugar (glucose and fructose) in varying quantities depending upon the variety. </p>
       <Link to={`/Blogs/${blogData[1].id}`}  class="btn btn-primary home-blog-btn">
         Read More <IoIosArrowForward />
@@ -129,11 +129,11 @@ const Home = () => {
         <img
           src={tomatoImg}
           alt="Featured Image 2"
-          class="img-fluid"
+          class="img-fluid home-blog-img"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }}
         />
       </div>
-      <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about tomato</h3>
+      <h3 class="fs-2 text-body-emphasis home-blog-head">Learn about Tomato</h3>
       <p>The plant requires relatively warm weather and much sunlight; it is grown chiefly in hothouses in cooler climates. Tomatoes are usually staked, tied, or caged to keep the stems and fruits off  </p>
       <Link to={`/Blogs/${blogData[2].id}`} class="btn btn-primary home-blog-btn ">
         Read More <IoIosArrowForward />
@@ -144,11 +144,11 @@ const Home = () => {
         <img
           src={appleImg}
           alt="Featured Image 3"
-          class="img-fluid"
+          class="img-fluid home-blog-img"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center' }}
         />
       </div>
-      <h3 class="fs-2 text-body-emphasis home-blog-head ">Learn about apple</h3>
+      <h3 class="fs-2 text-body-emphasis home-blog-head ">Learn about Apple</h3>
       <p>The apple itself is a pome (fleshy) fruit, in which the ripened ovary and surrounding tissue both become fleshy and edible. When harvested, apples are usually roundish, 5–10 cm (2–4 inches) in </p>
       <Link to={`/Blogs/${blogData[0].id}`}  class="btn btn-primary home-blog-btn">
         Read More <IoIosArrowForward />

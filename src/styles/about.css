@@ -22,6 +22,8 @@
     border: none !important;
     border-radius: 20px !important;
     margin-bottom: 20px; /* Add some spacing between cards */
+    /* width: 300px !important; */
+    
   }
   
   .card-title {
@@ -44,12 +46,16 @@
     object-fit: cover;
     object-position: top;
     margin-bottom: 10px;
+  
+    /* Add drop shadow effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* You can adjust the values as needed */
   }
   
   .team-member-name {
     margin: 0;
     font-weight: bold;
   }
+  
   
   /* Responsive adjustments for cards */
   @media (max-width: 768px) {

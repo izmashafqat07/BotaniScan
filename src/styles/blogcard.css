@@ -39,7 +39,9 @@
   /* blogcard.css */
 
 /* blogcard.css */
-
+.main-feature-blog{
+ 
+}
 /* Add hover effect to the image in the Featured Blog */
 .card-img-top:hover {
     opacity: 0.7; /* Adjust the opacity value as needed (0 for fully transparent, 1 for fully opaque) */

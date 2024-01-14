@@ -31,11 +31,11 @@ const Breadcrumbs = () => {
 };
 
 const getTitleFromSegment = (segment, blogData) => {
-    // Assuming blogData is an array of objects with id and title
+  
     const blog = blogData.find((blog) => blog.id.toString() === segment);
   
     if (blog) {
-      const titleWithoutBlog = blog.title.replace('blog ', ''); // Remove "blog" prefix
+      const titleWithoutBlog = blog.title.replace('blog ', ''); 
       return titleWithoutBlog;
     }
   
@@ -43,12 +43,12 @@ const getTitleFromSegment = (segment, blogData) => {
   };
   
   const buildPath = (segments, blogData) => {
-    // Assuming the last segment is the blog id
+ 
     const blogId = segments[segments.length - 1];
     const blog = blogData.find((blog) => blog.id.toString() === blogId);
     
     if (blog) {
-      const titleWithoutBlog = blog.title.replace('blog ', ''); // Remove "blog" prefix
+      const titleWithoutBlog = blog.title.replace('blog ', ''); 
       return `Blogs/${titleWithoutBlog}`;
     }
   

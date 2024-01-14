@@ -288,7 +288,7 @@ const Identify = () => {
 
         <div className="container-fluid result-container shadow col-md-12 col-sm-12">
           <div className="row">
-            <h2 className='text-center'>Identification Results</h2>
+            <h2 className='text-center' style={{marginTop:"20px"}}>Identification Results</h2>
             {loading ? (
               <div className="text-center mt-3">
                 <CircularProgress />

@@ -16,7 +16,7 @@ export const BlogProvider = ({ children }) => {
     {
 id:1,
 image:appleImg,
-title:"apple plant",
+title:"Apple plant",
 mainBlog:"Apple trees are generally small trees, and a given variety can be grafted onto dwarfing or semi-dwarfing rootstocks for smaller and less vigorous plants The apple itself is a pome (fleshy) fruit, in which the ripened ovary and surrounding tissue both become fleshy and edible. When harvested, apples are usually roundish, 5–10 cm (2–4 inches) in diameter, and some shade of red, green, or yellow in colour...",
 content: (
   <div>
@@ -32,7 +32,7 @@ content: (
     {
       id:2,
       image:grapeImg,
-      title:"grape plant",
+      title:"Grape plant",
       mainBlog:"The grape is usually a woody vine, climbing by means of tendrils (modified branches) and when untrained often reaching a length of 17 metres (56 feet) or more. In arid regions it may form an almost erect shrub...",
       content:(
         <>
@@ -50,7 +50,7 @@ content: (
     {
       id:3,
       image:tomatoImg,
-      title:"tomato plant",
+      title:"Tomato plant",
       mainBlog:"Tomato plants are generally much branched, spreading 60–180 cm (24–72 inches) and somewhat trailing when fruiting, but a few forms are compact and upright. Leaves are more or less hairy, strongly odorous...",
       content:(
         <>
@@ -89,7 +89,7 @@ content: (
     {
       id:5,
       image:tomatoDieseaseImg,
-      title:"tomato diseases",
+      title:"Tomato diseases",
       mainBlog:"Some of the most common fungal diseases that infect tomatoes grown in the home garden include Anthracnose fruit rot, Early blight, Septoria leaf spot, Late blight...",
       content:(
         <>
@@ -111,7 +111,7 @@ content: (
     {
       id:6,
       image:grapeDieseaseImg,
-      title:"grape diseases",
+      title:"Grape diseases",
       mainBlog:"The fungus pathogen overwinters in mummified berries from the previous season’s crop...",
       content:(
         <>
@@ -140,7 +140,7 @@ Infections also can become established in ripening fruit when this fungus enters
     {
       id:7,
       image:appleDieseaseImg,
-      title:"apple diseases",
+      title:"Apple diseases",
       mainBlog:"Yellow or chlorotic spots on leaves; dark olive green spots on leaves...",
       content:(
         <>
